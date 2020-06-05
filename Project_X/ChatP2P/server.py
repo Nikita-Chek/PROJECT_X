@@ -13,7 +13,7 @@ def recever(name, server, keys):
 			try:
 				message = server.recv(2048)
 				message = RSA.decryption(message, keys[0][0], keys[0][1])
-				print(Fore.BLUE + iTime, 'Client: ', message)
+				print(iTime, 'Client: ', message)
 			except:		
 				conn.close()
 			time.sleep(0.1)
@@ -23,7 +23,7 @@ def recever(name, server, keys):
 def sender(conn, crypt):
 	while True:
 		try:
-			message = input(Fore.GREEN)
+			message = input()
 			message = RSA.encryption(message,
 									int(crypt[0]),
 									int(crypt[1]))
