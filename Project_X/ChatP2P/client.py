@@ -6,7 +6,6 @@ import os
 sys.path.append(os.path.abspath('../RSA'))
 import RSA
 import registration as r
-from colorama import Fore
 
 def recever(name, keys):
 	try:
@@ -15,7 +14,7 @@ def recever(name, keys):
 			try:
 				message = server.recv(2048)
 				message = RSA.decryption(message, keys[0][0], keys[0][1])
-				print(Fore.BLUE + iTime, 'Server: ', message)
+				print(iTime, 'Server: ', message)
 			except:
 				break
 			time.sleep(0.1)
@@ -25,7 +24,7 @@ def recever(name, keys):
 def sender(crypt):
 	while True:
 		try:
-			message = input(Fore.GREEN)
+			message = input()
 			message = RSA.encryption(message,
 									int(crypt[0]),
 									int(crypt[1]))
